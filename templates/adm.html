@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página administrativa</title>
+    <link rel="stylesheet" href="../static/adm.css">
+</head>
+<body>
+    <header>
+        <h1>💙 Painel Administrativo - Eventos e Atividades 💙</h1>
+    </header>
+
+    <div class="container">
+        <form action="/addevento" method='post'>
+            <label >Título do Evento/Atividade</label>
+            <input type="text" name="titulo" placeholder="Título" required><br>
+            <label>Descrição</label>
+            <textarea name="descricao"  rows="4"  placeholder="Digite a descrição" required ></textarea>
+            <label >Data</label>
+            <input type="date" name="data" required>
+            <button type="submit">Adicionar Evento</button>
+        </form>
+
+</body>
+</html>

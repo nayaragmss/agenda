@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <title>Cadastrar-se</title>
+       <link rel="stylesheet" href="../static/pagcadastro.css">
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>୨ৎ Cadastro de Administrador ୨ৎ</h2>
+        <form action="/adicionarusuario" method="post">
+            <label >Nome de usuário</label>
+            <input type="text"  name="nome" required>
+
+            <label >E-mail</label>
+            <input type="email"  name="email" required>
+
+            <label >Senha</label>
+            <input type="password"  name="senha" required>
+
+           <label >Confirmar Senha</label>
+           <input type="password" name="confuser" required>
+
+          <button type="submit">Cadastrar</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

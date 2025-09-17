@@ -1,0 +1,58 @@
+body {
+  background-color: PaleVioletRed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: mistyrose;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: PaleVioletRed;
+}
+
+label {
+  color:PaleVioletRed;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding:10px;
+  margin-bottom: 20px;
+  border: 1px solid PaleVioletRed;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color:PaleVioletRed;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]{
+  background-color: PaleVioletRed;
+  border: none;
+  border-radius: 13px;
+  height: 30px;
+  width: 100%;
+  color:white;
+  font-size: 15px;
+}

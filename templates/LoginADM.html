@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Administrativa</title>
+    <link rel="stylesheet" href="../static/LoginADM.css">
+</head>
+
+<body>
+
+    <div class="pagadm"></div>
+
+    <div class="container">
+        <div class="login">
+            <h1>LOGIN</h1>
+            <form action="/verificar" method="post">
+                    <input type="text" name= "login" placeholder="Digite seu usuário" required>
+                    <br>
+                    <input type="password"  name= "senha" placeholder="Digite sua senha" required >
+                    <br><br>
+                    <button type="submit"> Enviar</button>
+                    <br>
+            </form>
+                    <br>
+            <form action="/cadastrar" method="post">
+                    <button type="submit"> Cadastrar-se </button>
+            </form>
+                    <br>
+                    <p class="mensagem">{{msg}}</p>
+                    <br>
+                    <div class="botao"> <a href="\">Voltar</a></div>
+
+       </div>
+    </div>
+
+</body>
+
+</html>
