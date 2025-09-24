@@ -3,8 +3,7 @@ from flask import *
 app = Flask(__name__)
 
 usuarios = [
-    ["João", "senha123", "joao@email.com"],
-    ["Maria", "senha456", "maria@email.com"]
+    ["Maria", "123", "maria@email.com"]
 ]
 eventoseatvs = []
 
@@ -23,7 +22,7 @@ def verificaradm():
         senha = request.form.get("senha")
         achei = False
         for usuario in usuarios:
-            if login == usuario[0] and senha == usuario[2]:
+            if login == usuario[0] and senha == usuario[1]:
                 achei = True
                 break
 
@@ -60,9 +59,13 @@ def add_evento():
     data = request.form.get('data')
     print([titulo, descricao, data])
     eventoseatvs.append([titulo, descricao, data])
-    for evento in eventoseatvs:
-        print(evento)
-    return render_template('agenda.html')
+
+    print(eventoseatvs)
+    if len(eventoseatvs) > 0:
+        return render_template('agenda.html', eventoeatvs=eventoseatvs)
+    else:
+        return render_template('agenda.html')
+
 
 
 if __name__ == '__main__':

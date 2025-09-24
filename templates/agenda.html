@@ -19,23 +19,12 @@
     <div class="conteudo">
         <div class="b">
             <h2>Eventos e Atividades</h2>
-            <div class="eventos">
-                <div class="evento">
-                    <h3>1º Seminário de Inovação</h3>
-                    <p><strong>Data:</strong> 12/10/2025</p>
-                    <p><strong>Descrição:</strong> Evento focado em novas tecnologias e inovações no campo acadêmico e profissional.</p>
-                </div>
-                <div class="evento">
-                    <h3>Semana de Integração Acadêmica</h3>
-                    <p><strong>Data:</strong> 20/10/2025</p>
-                    <p><strong>Descrição:</strong> Semana dedicada à integração dos alunos com diversas atividades culturais e acadêmicas.</p>
-                </div>
-                <div class="evento">
-                    <h3>Palestra sobre Tecnologia</h3>
-                    <p><strong>Data:</strong> 05/11/2025</p>
-                    <p><strong>Descrição:</strong> Palestra sobre os avanços tecnológicos e as tendências para o futuro da educação e do mercado.</p>
-                </div>
-            </div>
+
+                    {% for eventos in eventoeatvs %}
+                        <p>Titulo:{{eventos[0]}}</p>
+                        <hr>
+                    {% endfor %}
+
         </div>
 
         <div class="b">
