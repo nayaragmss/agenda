@@ -1,0 +1,32 @@
+body {
+    background-color:PowderBlue;
+    padding: 20px;
+}
+header {
+    text-align: center;
+    margin-bottom: 8px;
+    color:midnightblue;
+}
+.detalhes{
+    max-width: 500px;
+    color:midnightblue;
+    margin: 0 auto;
+    background:azure;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow:10px 10px 20px rgba(0,0,0,0.8);
+    text-align: center;
+    cursor: pointer;
+}
+.detalhes:hover {
+    transform: scale(1.05);
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    background-color: midnightblue;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}

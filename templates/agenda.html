@@ -6,9 +6,9 @@
    <link rel="stylesheet" href="../static/agenda.css">
 </head>
 <body>
-    <form action="/loginadm">
+  <form action="/loginadm">
   <button type="submit">PÁGINA DO ADM</button>
-</form>
+  </form>
 
     <div class="topo">
         <h1> 🎀Agenda IFPB🎀</h1>
@@ -19,27 +19,30 @@
     <div class="conteudo">
         <div class="b">
             <h2>Eventos e Atividades</h2>
+            <h5>Clique no evento para mais informações.</h5>
 
                     {% for eventos in eventoeatvs %}
-                        <p>Titulo:{{eventos[0]}}</p>
-                        <hr>
+                          <a href="/detalhes?titulo={{eventos[0]}}">
+                                {{eventos[0]}}
+                              <br>
+                          </a>
                     {% endfor %}
 
         </div>
 
         <div class="b">
-            <h2>Cronograma semanal</h2>
-            <p> <strong> • Segunda-Feira  - 15/09</strong><p>
-            <p>Feriado<p>
-            <p><strong> • Terça-feira - 16/09</strong><p>
-            <p>*olimpíada de matemática  financeira (assunto na plataforma que Lairton passou)<p>
-            <p><strong>• Quarta-feira - 17/09</strong><p>
-            <p>Contra turno<p>
-            <p>Aulão  <p>
-            <p><strong> • Quinta- Feira - 18/09</strong>  <p>
-            <p>Aula a tarde <p>
-            <p><strong> • Sexta-feira - 19/09</strong>  <p>
-            <p>Nada até o momento <p>
+           <h2>Links Úteis</h2>
+            <ul>
+              <li><a href="https://suap.ifpb.edu.br">SUAP</a></li>
+                <br>
+              <li><a href="https://presencial.ifpb.edu.br/login/index.php">Moodle</a></li>
+                <br>
+              <li><a href="https://www.ifpb.edu.br">Site do IFPB</a></li>
+                <br>
+              <li><a href="https://biblioteca.ifpb.edu.br">Biblioteca Virtual</a></li>
+                <br>
+            </ul>
+
 
         </div>
 

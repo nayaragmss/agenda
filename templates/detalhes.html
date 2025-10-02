@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Detalhes do Evento</title>
+    <link rel="stylesheet" href="../static/detalhes.css">
 </head>
 <body>
-$END$
+      <form action="/">
+      <button type="submit">Voltar</button>
+      </form>
+
+   <header>
+        <h1>💙 Detalhes do Evento 💙</h1>
+   </header>
+<div class="detalhes">
+            <p>Título: {{eventos[0]}}</p>
+            <p>Descrição: {{eventos[1]}}</p>
+            <p>Data: {{eventos[2]}}</p>
+</div>
+
+
 </body>
 </html>

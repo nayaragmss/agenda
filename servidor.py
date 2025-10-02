@@ -65,6 +65,19 @@ def add_evento():
         return render_template('agenda.html', eventoeatvs=eventoseatvs)
     else:
         return render_template('agenda.html')
+@app.route('/detalhes')
+def mostrar_detalhes():
+    titulo= request.values.get('titulo')
+    achei = None
+    for eventos in eventoseatvs:
+        if titulo == eventos[0]:
+            achei = eventos
+            break
+
+    return render_template('detalhes.html', eventos=achei)
+
+
+
 
 
 

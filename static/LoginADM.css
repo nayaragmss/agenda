@@ -50,4 +50,12 @@ button{
     background-color:mistyrose;
     border-radius: 20px;
 }
+button[type="submit"] {
+    padding: 10px 15px;
+    background-color: PaleVioletRed;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
 
