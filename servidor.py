@@ -15,6 +15,10 @@ def pagina_principal():
 def login_adm():
     return render_template('LoginADM.html')
 
+@app.route('/menuadm',  methods=['GET', 'POST'])
+def menu_adm():
+    return render_template("menuadm.html")
+
 @app.route('/verificar', methods=['POST'])
 def verificaradm():
         global usuarios
@@ -75,10 +79,6 @@ def mostrar_detalhes():
             break
 
     return render_template('detalhes.html', eventos=achei)
-
-
-
-
 
 
 if __name__ == '__main__':
