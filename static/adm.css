@@ -54,9 +54,15 @@ button {
     color: white;
     border-radius: 20px;
     cursor: pointer;
+
 }
 
 .event-list {
     margin-top: 20px;
+}
+
+.botaolistar{
+    text-align: center;
+
 }
 

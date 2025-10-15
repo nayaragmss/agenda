@@ -5,7 +5,14 @@ app = Flask(__name__)
 usuarios = [
     ["Maria", "123", "maria@email.com"]
 ]
-eventoseatvs = []
+eventoseatvs = [
+    ["Conferência de Sustentabilidade", "Auditório da UFRJ, Rio de Janeiro", "Discussões sobre meio ambiente, economia verde e inovação sustentável.", "2025-10-22"],
+    ["Feira de Tecnologia 2025", "Centro de Convenções de São Paulo", "Evento com as últimas inovações em tecnologia, palestras e exposições.", "2025-11-15"],
+    ["Festival de Música Independente", "Parque Ibirapuera, São Paulo", "Festival com bandas independentes de todo o Brasil.", "2025-12-01"]
+]
+app.secret_key = 'AGENDA'
+
+
 
 @app.route('/')
 def pagina_principal():
@@ -15,9 +22,6 @@ def pagina_principal():
 def login_adm():
     return render_template('LoginADM.html')
 
-@app.route('/menuadm',  methods=['GET', 'POST'])
-def menu_adm():
-    return render_template("menuadm.html")
 
 @app.route('/verificar', methods=['POST'])
 def verificaradm():
@@ -26,11 +30,8 @@ def verificaradm():
         senha = request.form.get("senha")
         achei = False
         for usuario in usuarios:
-            if login == usuario[0] and senha == usuario[1]:
-                achei = True
-                break
-
-        if achei:
+            if login == 'Maria' and senha == '123':
+                session['login'] = login
                 return render_template('adm.html')
         else:
                 return render_template('LoginADM.html', msg='LOGIN OU SENHA INCORRETOS')
@@ -59,10 +60,11 @@ def adicionar_usuario():
 def add_evento():
     global eventoseatvs
     titulo= request.form.get('titulo')
+    local = request.form.get('local')
     descricao = request.form.get('descricao')
     data = request.form.get('data')
-    print([titulo, descricao, data])
-    eventoseatvs.append([titulo, descricao, data])
+    print([titulo, local, descricao, data])
+    eventoseatvs.append([titulo, local, descricao, data])
 
     print(eventoseatvs)
     if len(eventoseatvs) > 0:
@@ -79,6 +81,18 @@ def mostrar_detalhes():
             break
 
     return render_template('detalhes.html', eventos=achei)
+
+
+@app.route('/listareventos', methods=['get'])
+def listar():
+    if 'login' in session:
+        print(len(eventoseatvs))
+        if len(eventoseatvs) > 0:
+            return render_template('listareventos.html', eventoseatvs=eventoseatvs)
+        else:
+            return render_template('listareventos.html', eventoeatvs=eventoseatvs )
+    else:
+        return render_template('LoginADM.html')
 
 
 if __name__ == '__main__':

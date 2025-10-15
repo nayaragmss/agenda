@@ -14,12 +14,24 @@
         <form action="/addevento" method='post'>
             <label >Título do Evento/Atividade</label>
             <input type="text" name="titulo" placeholder="Título" required><br>
-            <label>Descrição(Local, Horário e outras informações)</label>
+             <label >Local: </label>
+            <input type="text" name="local" placeholder="Local" required><br>
+            <label>Descrição(Horário e outras informações)</label>
             <textarea name="descricao"  rows="4"  placeholder="Digite a descrição" required ></textarea>
             <label >Data</label>
             <input type="date" name="data" required>
             <button type="submit">Adicionar Evento</button>
         </form>
+    </div>
+    <div class="botaolistar">
+              <form action="/listareventos">
+                  <button type="submit">Listar Eventos</button>
+              </form>
+    </div>
+
+
+
+
 
 </body>
 </html>
