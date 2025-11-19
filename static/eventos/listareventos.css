@@ -1,0 +1,63 @@
+body {
+    margin: 30px;
+    background-color: PowderBlue;
+
+}
+
+<h1>Lista de Eventos e Atividades</h1>
+
+              {% if eventoseatvs %}
+              {% endif  %}
+              {% for evento in eventoseatvs %}
+              <a href="/detalhes?titulo={{evento[0]}}">
+                {{evento[0]}}</a>
+                <br>
+              {% endfor %}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #eee;
+}
+
+button {
+    padding: 6px 12px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.bvoltar{
+   button{
+    text-align: center;
+    items-align:center;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background-color:SteelBlue;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+   }
+}
+
+button:hover {
+    background-color: #c9302c;
+}
+

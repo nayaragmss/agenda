@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de eventos</title>
-    <link rel="stylesheet" href="../static/listareventos.css">
+    <title>Lista de Eventos</title>
+    <link rel="stylesheet" href="../static/eventos/listareventos.css">
 </head>
 <body>
-        <h1>Lista de Eventos e Atividades</h1>
 
-              {% if eventoseatvs %}
-              {% endif  %}
-              {% for evento in eventoseatvs %}
-              <a href="/detalhes?titulo={{evento[0]}}">
-                {{evento[0]}}</a>
-                <br>
-              {% endfor %}
-</body>
+    <h1>Lista de Eventos</h1>
+
+    {% if eventoseatvs %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Local</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Excluir</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventoseatvs %}
+                <tr>
+                    <td>{{ evento[0] }}</td>
+                    <td>{{ evento[1] }}</td>
+                    <td>{{ evento[2] }}</td>
+                    <td>{{ evento[3] }}</td>
+                    <td>
+    <form action="/remover" method="POST" style="display:inline;">
+        <input tyody>
+        </table>pe="hidden" name="titulo" value="{{ evento[0] }}">
+        <button type="submit">Remover</button>
+    </form>
+</td>
+
+                </tr>
+                {% endfor %}
+            </tb
+    {% else %}
+        <p style="text-align: center;">Nenhum evento disponível.</p>
+    {% endif %}
+ <div class="bvoltar">
+         <form action="/">
+         <button type="submit">VOLTAR</button>
+         </form>
+ </div>
 </html>
+

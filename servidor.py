@@ -6,7 +6,7 @@ usuarios = [
     ["Maria", "123", "maria@email.com"]
 ]
 eventoseatvs = [
-    ["Conferência de Sustentabilidade", "Auditório da UFRJ, Rio de Janeiro", "Discussões sobre meio ambiente, economia verde e inovação sustentável.", "2025-10-22"],
+    ["Conferência de Sustentabilidade", "Auditório do IFPB, Campus Sousa", "Discussões sobre meio ambiente, economia verde e inovação sustentável.", "2025-10-22"],
     ["Feira de Tecnologia 2025", "Centro de Convenções de São Paulo", "Evento com as últimas inovações em tecnologia, palestras e exposições.", "2025-11-15"],
     ["Festival de Música Independente", "Parque Ibirapuera, São Paulo", "Festival com bandas independentes de todo o Brasil.", "2025-12-01"]
 ]
@@ -20,7 +20,7 @@ def pagina_principal():
 
 @app.route('/loginadm', methods=['GET', 'POST'])
 def login_adm():
-    return render_template('LoginADM.html')
+    return render_template('admin/LoginADM.html')
 
 
 @app.route('/verificar', methods=['POST'])
@@ -32,13 +32,13 @@ def verificaradm():
         for usuario in usuarios:
             if login == 'Maria' and senha == '123':
                 session['login'] = login
-                return render_template('adm.html')
+                return render_template('admin/adm.html')
         else:
-                return render_template('LoginADM.html', msg='LOGIN OU SENHA INCORRETOS')
+                return render_template('admin/LoginADM.html', msg='LOGIN OU SENHA INCORRETOS')
 
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar_usuario():
-    return render_template('pagcadastro.html')
+    return render_template('admin/pagcadastro.html')
 
 @app.route('/adicionarusuario', methods=['POST'])
 def adicionar_usuario():
@@ -51,9 +51,9 @@ def adicionar_usuario():
         usuarios.append([nome,email,senha])
         for user in usuarios:
             print(user)
-        return render_template('LoginADM.html')
+        return render_template('admin/LoginADM.html')
     else:
-        return render_template('pagcadastro.html')
+        return render_template('admin/pagcadastro.html')
 
 
 @app.route('/addevento', methods=['post'])
@@ -82,17 +82,26 @@ def mostrar_detalhes():
 
     return render_template('detalhes.html', eventos=achei)
 
+@app.route('/remover', methods=['post'])
+def remover_evento():
+    global eventoseatvs
+    titulo = request.form.get("titulo")
 
-@app.route('/listareventos', methods=['get'])
+    eventoseatvs = [e for e in eventoseatvs if e[0] != titulo]
+
+    return render_template('listareventos.html', eventoseatvs=eventoseatvs)
+
+@app.route('/listareventos', methods=['POST','get'])
 def listar():
     if 'login' in session:
         print(len(eventoseatvs))
         if len(eventoseatvs) > 0:
             return render_template('listareventos.html', eventoseatvs=eventoseatvs)
+
         else:
             return render_template('listareventos.html', eventoeatvs=eventoseatvs )
     else:
-        return render_template('LoginADM.html')
+        return render_template('admin/LoginADM.html')
 
 
 if __name__ == '__main__':

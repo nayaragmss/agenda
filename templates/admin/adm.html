@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Página administrativa</title>
-    <link rel="stylesheet" href="../static/adm.css">
+    <link rel="stylesheet" href="../../static/admin/adm.css">
 </head>
 <body>
     <header>
@@ -24,10 +24,14 @@
         </form>
     </div>
     <div class="botaolistar">
-              <form action="/listareventos">
+             <form action="/listareventos" method="POST">
+
                   <button type="submit">Listar Eventos</button>
               </form>
     </div>
+            <form action="/">
+                <button type="submit">Voltar</button>
+            </form>
 
 
 

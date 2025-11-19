@@ -51,6 +51,11 @@
             <img src="static/imagens/calendario.png" alt="Calendário 2025" width="100%" height="85%">
         </div>
     </div>
+          <ul>
+              {% for item in itens %}
+              <li>{{ item }}</li>
+              {% endfor %}
+          </ul>
     <footer class="rodape">
         <p>2025 IFPB.</p>
     </footer>
