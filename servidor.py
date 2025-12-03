@@ -1,4 +1,6 @@
 from flask import *
+from dao.banco import *
+from dao.usuarioDAO import *
 
 app = Flask(__name__)
 
@@ -12,11 +14,20 @@ eventoseatvs = [
 ]
 app.secret_key = 'AGENDA'
 
+init_db()
 
+@app.before_request
+def pegar_sessao():
+    g.session = Session()
 
+@app.teardown_appcontext
+def encerrar_sessao(exception=None):
+    Session.remove()
+    usuario_dao = usuarioDAO(g.session)
 @app.route('/')
 def pagina_principal():
     return render_template("agenda.html")
+
 
 @app.route('/loginadm', methods=['GET', 'POST'])
 def login_adm():
@@ -36,9 +47,12 @@ def verificaradm():
         else:
                 return render_template('admin/LoginADM.html', msg='LOGIN OU SENHA INCORRETOS')
 
+
+
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar_usuario():
     return render_template('admin/pagcadastro.html')
+
 
 @app.route('/adicionarusuario', methods=['POST'])
 def adicionar_usuario():
@@ -46,7 +60,7 @@ def adicionar_usuario():
     senha = request.form.get('senha')
     email = request.form.get('email')
     confuser = request.form.get('confuser')
-
+    usuario_dao = UsuarioDAO(g.session)
     if senha == confuser:
         usuarios.append([nome,email,senha])
         for user in usuarios:
@@ -54,6 +68,7 @@ def adicionar_usuario():
         return render_template('admin/LoginADM.html')
     else:
         return render_template('admin/pagcadastro.html')
+
 
 
 @app.route('/addevento', methods=['post'])
@@ -84,12 +99,12 @@ def mostrar_detalhes():
 
 @app.route('/remover', methods=['post'])
 def remover_evento():
-    global eventoseatvs
-    titulo = request.form.get("titulo")
+        global eventoseatvs
+        titulo = request.form.get("titulo")
 
-    eventoseatvs = [e for e in eventoseatvs if e[0] != titulo]
+        eventoseatvs = [e for e in eventoseatvs if e[0] != titulo]
 
-    return render_template('listareventos.html', eventoseatvs=eventoseatvs)
+        return render_template('listareventos.html', eventoseatvs=eventoseatvs)
 
 @app.route('/listareventos', methods=['POST','get'])
 def listar():

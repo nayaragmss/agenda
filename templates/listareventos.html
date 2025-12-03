@@ -7,45 +7,48 @@
 </head>
 <body>
 
-    <h1>Lista de Eventos</h1>
+<h1>Lista de Eventos</h1>
 
-    {% if eventoseatvs %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Local</th>
-                    <th>Descrição</th>
-                    <th>Data</th>
-                    <th>Excluir</th>
+{% if eventoseatvs %}
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Local</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventoseatvs %}
+            <tr>
+                <td>{{ evento[0] }}</td>
+                <td>{{ evento[1] }}</td>
+                <td>{{ evento[2] }}</td>
+                <td>{{ evento[3] }}</td>
+                <td>
+                    <form action="/remover" method="POST" style="display:inline;">
+                        <input type="hidden" name="titulo" value="{{ evento[0] }}">
+                        <button type="submit">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p style="text-align: center;">Nenhum evento disponível.</p>
+{% endif %}
 
-                </tr>
-            </thead>
-            <tbody>
-                {% for evento in eventoseatvs %}
-                <tr>
-                    <td>{{ evento[0] }}</td>
-                    <td>{{ evento[1] }}</td>
-                    <td>{{ evento[2] }}</td>
-                    <td>{{ evento[3] }}</td>
-                    <td>
-    <form action="/remover" method="POST" style="display:inline;">
-        <input tyody>
-        </table>pe="hidden" name="titulo" value="{{ evento[0] }}">
-        <button type="submit">Remover</button>
+<div class="bvoltar">
+    <form action="/">
+        <button type="submit">VOLTAR PARA PÁGINA INICIAL</button>
     </form>
-</td>
+</div>
 
-                </tr>
-                {% endfor %}
-            </tb
-    {% else %}
-        <p style="text-align: center;">Nenhum evento disponível.</p>
-    {% endif %}
- <div class="bvoltar">
-         <form action="/">
-         <button type="submit">VOLTAR</button>
-         </form>
- </div>
+
+</body>
+
 </html>
 
